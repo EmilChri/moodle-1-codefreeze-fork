@@ -47,6 +47,7 @@ if ($cm->course !== $course->id) { // Check if the course module matches the cou
 
 require_login($course, false, $cm);
 $PAGE->set_cacheable(false);
+$PAGE->requires->css('/mod/livequiz/style.css'); // Adds styling to the page.
 
 if (!isset($_SESSION['completed'])) { // If the session variable is not set, set it to false.
     $_SESSION['completed'] = false;
