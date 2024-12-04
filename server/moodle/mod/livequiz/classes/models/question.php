@@ -16,6 +16,8 @@
 
 namespace mod_livequiz\models;
 
+use dml_exception;
+use mod_livequiz\repositories\questions_answers_relation_repository;
 use stdClass;
 
 /**
@@ -289,27 +291,5 @@ class question {
             $data->answertype = 'radio';
         }
         return $data;
-    }
-
-    /**
-     * Gets a question instance with answers.
-     *
-     * @param $id
-     * @return question
-     * @throws dml_exception
-     */
-    public static function get_question_with_answers_from_id($id): question {
-        global $DB;
-        $questioninstance = $DB->get_record('livequiz_questions', ['id' => $id]);
-        $question = new question(
-            $questioninstance->title,
-            $questioninstance->description,
-            $questioninstance->timelimit,
-            $questioninstance->explanation
-        );
-        $question->set_id($questioninstance->id);
-        $answers = questions_answers_relation::get_answers_from_question($id);
-        $question->set_answers($answers);
-        return $question;
     }
 }

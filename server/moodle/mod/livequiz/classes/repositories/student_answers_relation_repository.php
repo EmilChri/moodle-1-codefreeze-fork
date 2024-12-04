@@ -21,16 +21,15 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-namespace mod_livequiz\models;
+namespace mod_livequiz\repositories;
 
 use dml_exception;
-use mod_livequiz\repositories\answer_repository;
 
 /**
- * Class student_answers_relation
- * @package mod_livequiz\student_answers_relation
+ * Class student_answers_relationRepository
+ * @package mod_livequiz\student_answers_relationRepository
  */
-class student_answers_relation {
+class student_answers_relation_repository {
     /**
      *  Insert student answer relation. Represents an answer given by a student in a participation.
      *

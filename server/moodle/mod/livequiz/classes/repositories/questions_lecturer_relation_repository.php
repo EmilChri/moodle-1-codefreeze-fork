@@ -14,7 +14,15 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace mod_livequiz\models;
+/**
+ * Repository for questions_lecturer_relation
+ *
+ * @package    mod_livequiz
+ * @copyright  2024 Software AAU
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+
+namespace mod_livequiz\repositories;
 
 use dml_exception;
 use dml_transaction_exception;
@@ -26,7 +34,7 @@ use dml_transaction_exception;
  * @copyright 2024 Software AAU
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class livequiz_questions_lecturer_relation {
+class questions_lecturer_relation_repository {
     /**
      *
      * Append a relation between af lecturer_id and the question_id. For easy access

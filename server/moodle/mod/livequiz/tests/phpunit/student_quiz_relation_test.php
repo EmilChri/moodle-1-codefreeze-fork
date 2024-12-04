@@ -25,7 +25,8 @@
  */
 namespace mod_livequiz;
 
-use mod_livequiz\models\student_quiz_relation;
+use mod_livequiz\repositories\student_quiz_relation_repository;
+use mod_livequiz\services\livequiz_services;
 
 /**
  * student_quiz_relation_test
@@ -59,34 +60,40 @@ final class student_quiz_relation_test extends \advanced_testcase {
      */
     protected function setUp(): void {
         parent::setUp();
+        $service = livequiz_services::get_singleton_service_instance();
         $this->resetAfterTest(true);
         $data = $this->create_test_data();
-        $actual = student_quiz_relation::insert_student_quiz_relation($data['quizid'], $data['studentid']);
+        $actual = $service->insert_student_quiz_relation($data['quizid'], $data['studentid']);
     }
     /**
      * Test of test_append_student_to_quiz.
      * It is impossible to assert the actual table id, since it changes every time.
-     * @covers \mod_livequiz\models\student_quiz_relation::append_student_to_quiz
+     * @covers \mod_livequiz\repositories\student_quiz_relation_repository::append_student_to_quiz
      * @return void
      */
     public function test_append_student_to_quiz(): void {
         $data = $this->create_test_data();
-        $actual = student_quiz_relation::insert_student_quiz_relation($data['quizid'], $data['studentid']);
+        $service = livequiz_services::get_singleton_service_instance();
+        $actual = $service->insert_student_quiz_relation($data['quizid'], $data['studentid']);
 
         $this->assertIsNumeric($actual);
         $this->assertGreaterThan(0, $actual);
     }
     /**
      * Test of get_all_student_participation_for_quiz
-     * @covers \mod_livequiz\models\student_quiz_relation::get_all_student_participation_for_quiz
+     * @covers \mod_livequiz\repositories\student_quiz_relation_repository::get_all_student_participation_for_quiz
      * @return void
      */
     public function test_get_all_student_participation_for_quiz(): void {
         $data = $this->create_test_data();
-        $participation1 = student_quiz_relation::insert_student_quiz_relation($data['quizid'], $data['studentid']);
-        $participation2 = student_quiz_relation::insert_student_quiz_relation($data['quizid'], $data['studentid']);
+        $service = livequiz_services::get_singleton_service_instance();
+        $participation1 = $service->insert_student_quiz_relation($data['quizid'], $data['studentid']);
+        $participation2 = $service->insert_student_quiz_relation($data['quizid'], $data['studentid']);
 
-        $participation = student_quiz_relation::get_all_student_participation_for_quiz($data['quizid'], $data['studentid']);
+        $participation = $service->get_all_student_participation_for_quiz(
+            $data['quizid'],
+            $data['studentid']
+        );
         $this->assertNotNull($participation[0]);
         $this->assertEquals($participation[0]->get_studentid(), $data['studentid']);
         $this->assertEquals($participation[0]->get_livequizid(), $data['quizid']);

@@ -20,12 +20,11 @@ use core\exception\moodle_exception;
 use dml_exception;
 use mod_livequiz\models\livequiz;
 use mod_livequiz\services\livequiz_services;
+use moodle_url;
 use renderable;
 use renderer_base;
-use templatable;
 use stdClass;
-use moodle_url;
-use mod_livequiz\models\student_quiz_relation;
+use templatable;
 
 /**
  * Class index_page_student

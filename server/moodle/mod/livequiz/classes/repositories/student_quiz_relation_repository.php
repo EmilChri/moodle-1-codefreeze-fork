@@ -14,10 +14,19 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace mod_livequiz\models;
+/**
+ * Repository for student_quiz_relation
+ *
+ * @package    mod_livequiz
+ * @copyright  2024 Software AAU
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+
+namespace mod_livequiz\repositories;
 
 use dml_exception;
 use dml_transaction_exception;
+use mod_livequiz\models\participation;
 
 /**
  * This class is responsible for handling the relationship between students and quizzes.
@@ -25,7 +34,7 @@ use dml_transaction_exception;
  * @copyright 2024 Software AAU
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class student_quiz_relation {
+class student_quiz_relation_repository {
     /**
      * Append a student-quiz relation given both their ids.
      *

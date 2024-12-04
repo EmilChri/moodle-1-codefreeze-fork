@@ -18,7 +18,7 @@
  * Repository for question
  *
  * @package    mod_livequiz
- * @copyright  2023
+ * @copyright  2024 Software AAU
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -26,7 +26,6 @@ namespace mod_livequiz\repositories;
 
 use dml_exception;
 use mod_livequiz\models\question;
-use mod_livequiz\models\questions_answers_relation;
 
 /**
  * Class question_repository
@@ -99,7 +98,7 @@ class question_repository {
             $questioninstance->explanation
         );
         $question->set_id($questioninstance->id);
-        $answers = questions_answers_relation::get_answers_from_question($id);
+        $answers = questions_answers_relation_repository::get_answers_from_question($id);
         $question->set_answers($answers);
         return $question;
     }
@@ -111,7 +110,7 @@ class question_repository {
      * @return void
      * @throws dml_exception
      */
-    public function update_question(question $question): void {
+    public static function update_question(question $question): void {
         global $DB;
         $questiondata = [
             'id' => $question->get_id(),

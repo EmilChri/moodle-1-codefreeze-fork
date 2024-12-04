@@ -17,19 +17,19 @@
 /**
  * LiveQuiz student_answers_relation_test
  *
- * This class contains unit tests for functions in the student_answers_relation class.
+ * This class contains unit tests for functions in the student_answers_relationRepository class.
  *
  * @package mod_livequiz
  * @copyright 2024 Software AAU
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 namespace mod_livequiz;
-use mod_livequiz\models\student_answers_relation;
+use mod_livequiz\repositories\student_answers_relation_repository;
 use mod_livequiz\models\answer;
 use mod_livequiz\services\livequiz_services;
 
 /**
- * student_answers_relation
+ * student_answers_relationRepository
  */
 final class student_answers_relation_test extends \advanced_testcase {
     /**
@@ -69,7 +69,7 @@ final class student_answers_relation_test extends \advanced_testcase {
     }
     /**
      * Test of insert_student_answer_relation
-     * @covers \mod_livequiz\models\student_answers_relation::insert_student_answer_relation
+     * @covers \mod_livequiz\repositories\student_answers_relation_repository::insert_student_answer_relation
      * @return void
      */
     public function test_insert_student_answer_relation(): void {
@@ -88,7 +88,7 @@ final class student_answers_relation_test extends \advanced_testcase {
     }
     /**
      * Test of get_answersids_from_student_in_participation
-     * @covers \mod_livequiz\models\student_quiz_relation::get_answersids_from_student_in_participation
+     * @covers \mod_livequiz\repositories\student_quiz_relation_repository::get_answersids_from_student_in_participation
      * @return void
      */
     public function test_get_answersids_from_student_in_participation(): void {
@@ -98,7 +98,7 @@ final class student_answers_relation_test extends \advanced_testcase {
 
         // Simulates multiple answers to a participation from a student.
         for ($i = 0; $i < 10; $i++) {
-            student_answers_relation::insert_student_answer_relation(
+            $service->insert_student_answer_relation(
                 $studentanswerdata['studentid'],
                 $answerdata[$i]->get_id(),
                 $studentanswerdata['participationid'],

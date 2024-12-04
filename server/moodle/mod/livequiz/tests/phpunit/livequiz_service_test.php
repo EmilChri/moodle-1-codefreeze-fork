@@ -27,14 +27,12 @@ namespace mod_livequiz;
 
 use dml_exception;
 use dml_transaction_exception;
-use mod_livequiz\models\livequiz;
-use mod_livequiz\models\student_answers_relation;
-use mod_livequiz\repositories\answer_repository;
-use mod_livequiz\services\livequiz_services;
-use mod_livequiz\models\question;
+use mod_livequiz\repositories\student_answers_relation_repository;
 use mod_livequiz\models\answer;
+use mod_livequiz\models\livequiz;
 use mod_livequiz\models\participation;
-use mod_livequiz\models\student_quiz_relation;
+use mod_livequiz\models\question;
+use mod_livequiz\services\livequiz_services;
 use PhpXmlRpc\Exception;
 
 /**
@@ -492,7 +490,7 @@ final class livequiz_service_test extends \advanced_testcase {
             'answerid' => $testquizsubmittedquestions[0]->get_answers()[0]->get_id(),
         ];
 
-        student_answers_relation::insert_student_answer_relation(
+        student_answers_relation_repository::insert_student_answer_relation(
             $studentanswertestdata['studentid'],
             $studentanswertestdata['answerid'],
             $studentanswertestdata['participationid']
@@ -637,7 +635,7 @@ final class livequiz_service_test extends \advanced_testcase {
             $answers = $question->get_answers();
             $answerid = $answers[0]->get_id();
             $service->student_answer_submission($studentid, $answerid, $participationid);
-            $this->assertEquals(1, student_answers_relation::get_answer_participation_count($answerid));
+            $this->assertEquals(1, student_answers_relation_repository::get_answer_participation_count($answerid));
         }
     }
 

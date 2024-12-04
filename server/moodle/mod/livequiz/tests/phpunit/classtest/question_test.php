@@ -28,9 +28,6 @@ use advanced_testcase;
 use dml_exception;
 use mod_livequiz\models\answer;
 use mod_livequiz\models\question;
-use mod_livequiz\models\questions_answers_relation;
-use mod_livequiz\repositories\answer_repository;
-use mod_livequiz\repositories\question_repository;
 use mod_livequiz\services\livequiz_services;
 use ReflectionClass;
 use ReflectionException;
@@ -121,7 +118,7 @@ final class question_test extends advanced_testcase {
 
     /**
      * Test of get_question_with_answers_from_id for question class.
-     * @covers       \mod_livequiz\models\question::get_question_with_answers_from_id
+     * @covers       \mod_livequiz\models\question_repository::get_question_with_answers_from_id
      * @throws dml_exception
      */
     public function test_get_question_with_answers_from_id(): void {

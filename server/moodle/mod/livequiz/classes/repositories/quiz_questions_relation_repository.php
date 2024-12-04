@@ -15,23 +15,22 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Displays the livequiz view page.
+ * Repository for quiz_questions_relation
  *
- * @package   mod_livequiz
- * @copyright 2024 Software AAU
- * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package    mod_livequiz
+ * @copyright  2024 Software AAU
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-namespace mod_livequiz\models;
+namespace mod_livequiz\repositories;
 
 use dml_exception;
-use mod_livequiz\repositories\question_repository;
 
 /**
- * Class quiz_questions_relation
- * @package mod_livequiz\quiz_questions_relation
+ * Class quiz_questions_relationRepository
+ * @package mod_livequiz\quiz_questions_relationRepository
  */
-class quiz_questions_relation {
+class quiz_questions_relation_repository {
     /**
      *  Append a question object to a quiz, given its id.
      *

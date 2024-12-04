@@ -19,15 +19,12 @@ namespace mod_livequiz\output;
 use core\exception\moodle_exception;
 use dml_exception;
 use mod_livequiz\models\livequiz;
-use mod_livequiz\models\livequiz_questions_lecturer_relation;
-use mod_livequiz\models\question;
-use mod_livequiz\repositories\question_repository;
 use mod_livequiz\services\livequiz_services;
+use moodle_url;
 use renderable;
 use renderer_base;
-use templatable;
 use stdClass;
-use moodle_url;
+use templatable;
 
 /**
  * Class index_page_teacher
